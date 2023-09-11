@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffic Light Simulator</title>
+<style>
+.traffic-light {
+width: 100px;
+height: 280px;
+background: #333;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+padding: 20px;
+}
+
+.light {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+}
+
+.red {
+background-color: transparent;
+border: 3px solid red;
+}
+
+.yellow {
+background-color: transparent;
+border: 3px solid yellow;
+}
+
+.green {
+background-color: transparent;
+border: 3px solid green;
+}
+</style>
+</head>
+<body>
+<div class="traffic-light">
+<div class="light red"></div>
+<div class="light yellow"></div>
+<div class="light green"></div>
+</div>
+<script>
+const lights = document.querySelectorAll('.light');
+let currentLightIndex = 0;
+
+function changeLights() {
+lights.forEach(light => {
+light.style.backgroundColor = 'transparent';
+});
+lights[currentLightIndex].style.backgroundColor = lights[currentLightIndex].classList[1];
+currentLightIndex = (currentLightIndex + 1) % lights.length;
+setTimeout(changeLights, 2000);
+}
+
+changeLights();
+</script>
+</body>
+</html>
